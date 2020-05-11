@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { AppContext } from './AppProvider.js';
@@ -24,11 +24,21 @@ const StyledCharts = styled.div`
 			font-size: 3rem;
 			font-weight: 400;
 			margin-top: 2rem;			
-		}		
+		}
+		
+		@media (max-width: 1440px) {
+			margin: 4rem 2rem;
+			width: calc(100% - 4rem);
+		}				
 	}
+	
+	overflow: scroll;	
 `;
 
 import { DarkSwitch } from './SubComponents/DarkSwitch.js';
+import { Chart } from './SubComponents/Chart.js';
+import { VirtualizedTable } from './SubComponents/Table.js';
+
 
 export function Charts() {
 	const { dark } = useContext(AppContext);
@@ -40,6 +50,8 @@ export function Charts() {
 				<div id="charts-center-display">
 					<div id="charts-center-display-title">Pr0con.io</div>
 					<DarkSwitch />
+					<Chart />
+					<VirtualizedTable />
 				</div>
 			</StyledCharts>
 		</>
