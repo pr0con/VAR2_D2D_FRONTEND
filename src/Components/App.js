@@ -163,6 +163,7 @@ import { Sidebar } from './Sidebar.js';
 
 import { Dashboard } from './Dashboard.js';
 import { Charts } from './Charts.js';
+import { Sentinel } from './Sentinel.js';
 import { Widgets } from './Widgets.js';
 
 import { Slider } from './Slider.js';
@@ -171,6 +172,7 @@ function App() {
 	const routes = {
 		'/': () => <Dashboard />,
 		'/charts': () => <Charts />,
+		'/sentinel': () => <Sentinel />,
 		'/widgets': () => <Widgets />,
 	}
 	const routeResult = useRoutes(routes);
