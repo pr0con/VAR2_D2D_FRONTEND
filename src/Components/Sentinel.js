@@ -14,6 +14,9 @@ const anime1 = keyframes`
 `;
 
 const StyledSentinel = styled.div`
+	position: relative;
+	width: calc(100vw - 300px);
+	
 	svg.websocket-heart {
 		width: 3rem;
 		margin-right: 1rem;

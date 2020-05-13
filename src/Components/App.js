@@ -164,6 +164,8 @@ import { Sidebar } from './Sidebar.js';
 import { Dashboard } from './Dashboard.js';
 import { Charts } from './Charts.js';
 import { Sentinel } from './Sentinel.js';
+import { D3One } from './D3One.js';
+import { D3Two } from './D3Two.js';
 import { Widgets } from './Widgets.js';
 
 import { Slider } from './Slider.js';
@@ -173,6 +175,8 @@ function App() {
 		'/': () => <Dashboard />,
 		'/charts': () => <Charts />,
 		'/sentinel': () => <Sentinel />,
+		'/d3one': () => <D3One />,
+		'/d3two': () => <D3Two />,
 		'/widgets': () => <Widgets />,
 	}
 	const routeResult = useRoutes(routes);

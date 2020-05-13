@@ -18,7 +18,7 @@ export default function(props) {
 	/* Sentinel Data */
 	const [ targets, setTargets ] = useState([]);
 	const [ hitTotals, setHitTotals ] = useState(null);	
-		
+	const [ cpu, setCpu ] = useState([]);		
 		
 	const request = async (jwt,type,data) => {
 		let payload = {
@@ -66,6 +66,18 @@ export default function(props) {
 						//count included in this if needed as -> tjo['data']['count']
 						setTargets(tjo['data']['targets_geo_data']);
 						break;
+					case "target-hit-totals":
+						setHitTotals(tjo['data']);
+						break;
+					case "system-cpu-usage":
+						console.log(tjo['data'])
+						let cpuData = [];
+						(tjo['data'][0] !== 0) ? cpuData.push({ label: '1 min', value: tjo['data'][0] }) : '';
+						(tjo['data'][1] !== 0) ? cpuData.push({ label: '5 min', value: tjo['data'][1] }) : '';
+						(tjo['data'][2] !== 0) ? cpuData.push({ label: '15 min', value: tjo['data'][2] }) : '';	
+						setCpu(cpuData);
+											
+						break;	
 					default:
 						break;
 				}
@@ -80,7 +92,8 @@ export default function(props) {
 				console.log(error_event);
 			}		
 			
-			request('noop', 'request-target-plot-data', 'noop') 
+			request('noop', 'request-target-plot-data', 'noop');
+			request('^vAr^','request-target-hit-totals','noop'); 
 		}
 	}		
 	
@@ -124,6 +137,7 @@ export default function(props) {
 		<AppContext.Provider value={{
 			rs,
 			wsId,
+			request,
 			
 			dev,
 			
@@ -137,6 +151,8 @@ export default function(props) {
 			
 			/* Sentinel */
 			targets,
+			hitTotals,
+			cpu,
 		}}>
 			{ props.children }
 		</AppContext.Provider>
